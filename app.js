@@ -33,7 +33,7 @@
       smallestNum: 1,
       secretNum: null,
       previousGuesses:[],
-      
+      guess: null,
       
       //get guess method
       
@@ -49,7 +49,7 @@
         
           if (this.guess === this.secretNum){
           return ```The computer guessed ${this.secretNum} and you guessed ${this.guess}. Congratulations!! You're a winner!!!```
-          } else if (this.guess !== this.secretNum){
+          } else if(this.guess !== this.secretNum){
           this.previousGuesses.push(this.guess)
         } 
         if (this.guess > this.secretNum){
@@ -57,23 +57,24 @@
           
         }else{(this.guess < this.secretNum)
             return 'youre too low sonny'
-          
-          
-          
-          
-      }},
-      
+    
+          }},
+       
       getGuess: function(){
         let guess = prompt( `Enter a guess between ${this.biggestNum} and ${this.smallestNum}!`)
         guess = parseInt(guess)
         this.previousGuesses.push(guess)
-     
-     
-     
-      },
-      ///getGuess: function()
+
+            while(guess != this.secretNum)
+            { 
+              if (guess < this.secretNum){ return "you're too low"
+        }else if (guess > this.secretNum){return "you're too high!!"
+      }else {return NaN}
+               }},   
+
+
       
-      render: function(){
+     render: function(){
         let daGuess = this.getGuess()
         if (daGuess === this.secretNum){
           return "Congrats!! You're a Winner!!!"//enter temp.literals
