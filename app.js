@@ -32,57 +32,121 @@
       biggestNum: 100,
       smallestNum: 1,
       secretNum: null,
-      previousGuesses:[],
+      prevGuesses:[],
       guess: null,
       
-      //get guess method
-      
-      
-      play: function() {
-        //let guess = this.getGuess
-        
-        this.secretNum = Math.floor(Math.random() * 
-        (this.biggestNum - this.smallestNum + 1)) + this.smallestNum
-        this.getGuess()
-        console.log(this.previousGuesses)
-        this.render()
-        
-          if (this.guess === this.secretNum){
-          return ```The computer guessed ${this.secretNum} and you guessed ${this.guess}. Congratulations!! You're a winner!!!```
-          } else if(this.guess !== this.secretNum){
-          this.previousGuesses.push(this.guess)
-        } 
-        if (this.guess > this.secretNum){
-          return 'youre too high sonny'
-          
-        }else{(this.guess < this.secretNum)
-            return 'youre too low sonny'
-    
-          }},
-       
       getGuess: function(){
-        let guess = prompt( `Enter a guess between ${this.biggestNum} and ${this.smallestNum}!`)
-        guess = parseInt(guess)
-        this.previousGuesses.push(guess)
+        let guess 
+        while(isNaN(guess) || guess < this.smallestNum || guess > this.biggestNum){
+            guess = prompt('guess a number...[insert templ literals]' )
+            guess = parseInt(guess);
+        } 
+          return guess
+          },
+    
+          
+      
 
-            while(guess != this.secretNum)
-            { 
-              if (guess < this.secretNum){ return "you're too low"
-        }else if (guess > this.secretNum){return "you're too high!!"
-      }else {return NaN}
-               }},   
+
+      play: function() {
+    this.secretNum = Math.floor(Math.random() * 
+      (this.biggestNum - this.smallestNum + 1)) + this.smallestNum
+      
+      while(this.prevGuesses[this.prevGuesses.length -1] !== this.secretNum){
+        this.prevGuesses.push(this.getGuess());
+        
+        if(this.prevGuesses.push(this.getGuess()) ){
+            this.biggestNum =this.prevGuesses[this.prevGuesses.length-1]
+        } else { 
+          this.biggestNum =this.prevGuesses[this.prevGuesses.length-1]
+
+        }
+
+        console.log(this.prevGuesses)
+      }
+  } ,
+  
+          
+
+
+    render: function(){ 
+      if(this.prevGuesses[this.prevGuesses.length - 1]=== this. secretNum){
+        alert('congrats! Youre a winner')
+      }
+      if(this.prevGuesses[this.prevGuesses.length - 1 ] < this.secretNum){ 
+        alert('too low')
+      }else{
+        (this.prevGuesses[this.prevGuesses.length - 1 ] > this.secretNum)
+        alert('too high')
+    
+  }
+}
+    }
+  game.play()
+  console.log('hello')
+  
+  console.log(game.secretNum)  
+  
+
+
+//-----old get guess
+    // getGuess: function(){
+      //   let 
+      //   guess = prompt( `Enter a guess between ${this.biggestNum} and ${this.smallestNum}!`)
+      //   guess = parseInt(guess)
+      //   this.prevGuesses.push(guess)
+
+      //       while(guess != this.secretNum)
+      //       { 
+      //         if (guess < this.secretNum){ alert ("you're too low")
+      //   }else if (guess > this.secretNum){alert("you're too high!!")
+      // }else {alert ('NaN')//}
+      //     }}},   
+
+    
+
+
+
+      //-----old render function that didn't work
+      //  render: function(){
+    //     let daGuess = this.getGuess()
+    //     if (daGuess === this.secretNum){
+    //       return "Congrats!! You're a Winner!!!"//enter temp.literals
+    //     }else{  return "Not Quite =( Guess again"
+    //   }
+    // }}
+
+              
+      // play: function() {
+      //       //let guess = this.getGuess
+            
+      //       this.secretNum = Math.floor(Math.random() * 
+      //       (this.biggestNum - this.smallestNum + 1)) + this.smallestNum
+      //       console.log(this.secretNum)
+      //       this.getGuess()
+      //       console.log(this.prevGuesses)
+      //       this.render()
+            
+      //       if (this.guess === this.secretNum){
+      //         return ```The computer guessed ${this.secretNum} and you guessed ${this.guess}. Congratulations!! You're a winner!!!```
+      //         } else if(this.guess !== this.secretNum){
+      //           return 'not quite'
+      //         ///this.prevGuesses.push(this.guess)
+      //       } 
+      //       if (this.guess > this.secretNum){
+      //         return 'youre too high sonny'
+              
+      //       }else{(this.guess < this.secretNum)
+      //           return 'youre too low sonny'
+        
+      //         }},
 
 
       
-     render: function(){
-        let daGuess = this.getGuess()
-        if (daGuess === this.secretNum){
-          return "Congrats!! You're a Winner!!!"//enter temp.literals
-        }else{  return "Not Quite =( Guess again"
-      }
-    }
-  }
-    console.log(game.play())
-    console.log(game.getGuess())
-
-    
+    //  render: function(){
+    //     let daGuess = this.getGuess()
+    //     if (daGuess === this.secretNum){
+    //       return "Congrats!! You're a Winner!!!"//enter temp.literals
+    //     }else{  return "Not Quite =( Guess again"
+    //   }
+    // }}

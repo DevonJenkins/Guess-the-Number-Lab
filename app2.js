@@ -19,23 +19,24 @@ while(isNaN(guess) || guess < this.smallestNum || guess > this.biggestNum){
   return guess
   },
   
-  console.log(secretNum),
+  
 
   play: function() {
     this.secretNum = Math.floor(Math.random() * 
       (this.biggestNum - this.smallestNum + 1)) + this.smallestNum
+      console.log(this.secretNum);
       
-      while(this.prevGuesses[this.prevGuesses.length -1] !== this.secretNum){
-        this.prevGuesses.push(this.getGuess());
-        if(this.prevGuesses.push(this.getGuess()) ){
-            this.biggestNum =this.prevGuesses[this.prevGuesses.length-1]
-        } else { 
-          this.biggestNum =this.prevGuesses[this.prevGuesses.length-1]
-
+      while (this.prevGuesses[this.prevGuesses.length - 1] !== this.secretNum) {
+        this.prevGuesses.push(this.getGuess())
+        console.log(this.prevGuesses);
+        if (this.prevGuesses[this.prevGuesses.length - 1] < this.secretNum) {
+          this.smallestNum = this.prevGuesses[this.prevGuesses.length - 1]
+        }else{
+          this.biggestNum = this.prevGuesses[this.prevGuesses.length - 1]
         }
-
-        console.log(this.prevGuesses)
-      }
+        this.render();
+        
+    }
   },
       
 
@@ -56,10 +57,9 @@ render: function(){
 
 },
 
-}
-console.log(game.play)
-//game.play()  
 
+}
+game.play()  
 
 
 
