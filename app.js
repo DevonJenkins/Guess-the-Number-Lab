@@ -1,7 +1,7 @@
 
   ///you need to render a guess count function that takes the current guess and compares it to the mystery number. If the guess isn't a number or is outside the guess range, then keep running the get guess function. This is similar to the get guesses function, but its purpose is to either stop the loop or keep the loop running       
   
-  //this function is similar to the one (currently in pseudocode) above play, but the purpose is to get the guess, compare it to the mysteryNum 
+  
   
   // getGuess: function(){ 
     // let gettingGuess = true
@@ -33,77 +33,81 @@
       smallestNum: 1,
       secretNum: null,
       prevGuesses:[],
-      guess: null,
+      
       
       getGuess: function(){
-        let guess 
-        while(isNaN(guess) || guess < this.smallestNum || guess > this.biggestNum){
-            guess = prompt('guess a number...[insert templ literals]' )
-            guess = parseInt(guess);
-        } 
+        let guess
+        while(isNaN(guess) || guess < this.smallestNum || guess > this.biggestNum){ 
+              guess = prompt( `Enter a guess between ${this.biggestNum} and ${this.smallestNum}!`)
+              guess = parseInt(guess)
+            }
           return guess
-          },
-    
+        },   
           
-      
+      //         if (guess < this.secretNum){ alert ("you're too low")
+      //   }else if (guess > this.secretNum){alert("you're too high!!")
+      // }else {alert ('NaN')//}
+    
 
 
-      play: function() {
-    this.secretNum = Math.floor(Math.random() * 
-      (this.biggestNum - this.smallestNum + 1)) + this.smallestNum
-      
-      while(this.prevGuesses[this.prevGuesses.length -1] !== this.secretNum){
-        this.prevGuesses.push(this.getGuess());
         
-        if(this.prevGuesses.push(this.getGuess()) ){
-            this.biggestNum =this.prevGuesses[this.prevGuesses.length-1]
-        } else { 
-          this.biggestNum =this.prevGuesses[this.prevGuesses.length-1]
+    play: function() {
+            //let guess = this.getGuess
+           this.secretNum = Math.floor(Math.random() * 
+            (this.biggestNum - this.smallestNum + 1)) + this.smallestNum
+            console.log(this.secretNum);
 
-        }
+              while (this.prevGuesses[this.prevGuesses.length - 1] !== this.secretNum){
+                this.prevGuesses.push(this.getGuess())
+                console.log(this.prevGuesses);
+                
 
-        console.log(this.prevGuesses)
-      }
-  } ,
-  
+                ///something weird happening here
+                // if(this.prevGuesses[this.prevGuesses - 1] < this.secretNum){
+                //   this.smallestNum = this.prevGuesses[this.prevGuesses.length - 1]
+                  
+                // }else if((this.prevGuesses[this.prevGuesses - 1] > this.secretNum)){
+                //   this.biggestNum = this.prevGuesses[this.prevGuesses.length - 1]
+                  
+                // }
+
+
+
+
+
+
+
+                
+                this.render();
+              }
+            
+    },
+            
           
 
 
     render: function(){ 
       if(this.prevGuesses[this.prevGuesses.length - 1]=== this. secretNum){
-        alert('congrats! Youre a winner')
+        alert('congratulations! Youre a winner')
       }
       if(this.prevGuesses[this.prevGuesses.length - 1 ] < this.secretNum){ 
-        alert('too low')
-      }else{
+        alert('Youre too low, sonny')
+      }else if
         (this.prevGuesses[this.prevGuesses.length - 1 ] > this.secretNum)
-        alert('too high')
+        {
+          alert('too high,sonny')
     
   }
 }
     }
   game.play()
   console.log('hello')
-  
-  console.log(game.secretNum)  
-  
 
 
 //-----old get guess
-    // getGuess: function(){
-      //   let 
-      //   guess = prompt( `Enter a guess between ${this.biggestNum} and ${this.smallestNum}!`)
-      //   guess = parseInt(guess)
-      //   this.prevGuesses.push(guess)
-
-      //       while(guess != this.secretNum)
-      //       { 
-      //         if (guess < this.secretNum){ alert ("you're too low")
-      //   }else if (guess > this.secretNum){alert("you're too high!!")
-      // }else {alert ('NaN')//}
-      //     }}},   
-
     
+
+    ///this.prevGuesses.push(guess)///problem 
 
 
 
@@ -116,7 +120,9 @@
     //   }
     // }}
 
-              
+    //--------- old play function
+    
+    
       // play: function() {
       //       //let guess = this.getGuess
             
@@ -141,7 +147,7 @@
         
       //         }},
 
-
+///--------old render function 
       
     //  render: function(){
     //     let daGuess = this.getGuess()
